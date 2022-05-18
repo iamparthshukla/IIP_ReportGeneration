@@ -1,0 +1,65 @@
+---
+title: ""
+output:
+  word_document:
+    reference_docx: "/Users/parth/Desktop/Invest India/IIP_report_generation/iip_report_template.docx"
+---
+
+```{r loading, echo=FALSE, include=FALSE}
+
+# making dataframes of different data
+
+library(rmarkdown)
+library(readxl)
+library(flextable)
+
+path <- "/Users/parth/Desktop/Invest India/IIP_report_generation/new_data.xlsx"
+
+sectoral_indices <- read_excel(path, sheet = 1)
+sectoral_growth <- read_excel(path, sheet = 2)
+ubc_indices <- read_excel(path, sheet = 3)
+ubc_monthly <- read_excel(path, sheet = 4)
+annual_sec_indices <- read_excel(path, sheet = 5)
+annual_sec_growth <- read_excel(path, sheet = 6)
+ubc_annual_prod <- read_excel(path, sheet = 7)
+ubc_annual_growth <- read_excel(path, sheet = 8)
+
+formatnew <- function(x,pgwidth = 6){
+  ft <- qflextable(x)
+  ft <- theme_box(ft)
+  ft <- bg(ft, bg = "#34ABA2", part = "header")
+  ft <- line_spacing(ft, space = 1, part = "all")
+  ft <- set_table_properties(ft, width = 0.5, layout = "autofit")
+  ft <- color(ft, color = "white", part = "header")
+  ft <- font(ft, fontname = "Cambria")
+  ft <- align(ft, align = "center", part = "header")
+  line_spacing(ft, i = NULL, j = NULL, space = 0, part = "body", unit = "in")
+  padding(ft, i = NULL, j = NULL, padding = NULL, padding.top = NULL, padding.bottom = NULL, padding.left = NULL, padding.right = NULL)
+  
+  return(ft)
+}
+```
+
+# New Delhi, Date: `r Sys.Date()`
+
+## PRESS RELEASE
+
+## Index Numbers of Wholesale Price in India for the month of Feb, 2022 (Base Year: 2011-12) 
+
+### The Office of the Economic Adviser, Department for Promotion of Industry and Internal Trade is releasing index numbers of wholesale price in India (Base Year: 2011-12) for the month of March, 2022 (Provisional) and for the month of January, 2022 (Final) in this press release. Provisional figures of Wholesale Price Index (WPI) are released on 14th of every month (or next working day) with a time lag of two weeks of the reference month and compiled with data received from institutional sources and selected manufacturing units across the country. After 10 weeks, the index is finalized and final figures are released and then frozen thereafter.
+
+### The annual rate of inflation is 14.55% (Provisional) for the month of March, 2022 (over March, 2021) as compared to 7.89% in March, 2021. The high rate of inflation in March, 2022 is primarily due to rise in prices of crude petroleum & natural gas, mineral oils, basic metals, etc owing to disruption in global supply chain caused by Russia-Ukraine conflict. The index numbers and inflation rate for the last three months of all commodities and WPI components are given below. `r formatnew(ubc_annual_prod)`
+
+### The annual rate of inflation is 14.55% (Provisional) for the month of March, 2022 (over March, 2021) as compared to 7.89% in March, 2021. The high rate of inflation in March, 2022 is primarily due to rise in prices of crude petroleum & natural gas, mineral oils, basic metals, etc owing to disruption in global supply chain caused by Russia-Ukraine conflict. The index numbers and inflation rate for the last three months of all commodities and WPI components are given below. `r formatnew(ubc_indices)`
+
+### The annual rate of inflation is 14.55% (Provisional) for the month of March, 2022 (over March, 2021) as compared to 7.89% in March, 2021. The high rate of inflation in March, 2022 is primarily due to rise in prices of crude petroleum & natural gas, mineral oils, basic metals, etc owing to disruption in global supply chain caused by Russia-Ukraine conflict. The index numbers and inflation rate for the last three months of all commodities and WPI components are given below. `r formatnew(ubc_monthly)`
+
+### The annual rate of inflation is 14.55% (Provisional) for the month of March, 2022 (over March, 2021) as compared to 7.89% in March, 2021. The high rate of inflation in March, 2022 is primarily due to rise in prices of crude petroleum & natural gas, mineral oils, basic metals, etc owing to disruption in global supply chain caused by Russia-Ukraine conflict. The index numbers and inflation rate for the last three months of all commodities and WPI components are given below. `r formatnew(sectoral_indices)`
+
+### The annual rate of inflation is 14.55% (Provisional) for the month of March, 2022 (over March, 2021) as compared to 7.89% in March, 2021. The high rate of inflation in March, 2022 is primarily due to rise in prices of crude petroleum & natural gas, mineral oils, basic metals, etc owing to disruption in global supply chain caused by Russia-Ukraine conflict. The index numbers and inflation rate for the last three months of all commodities and WPI components are given below. `r formatnew(ubc_annual_growth)`
+
+### The annual rate of inflation is 14.55% (Provisional) for the month of March, 2022 (over March, 2021) as compared to 7.89% in March, 2021. The high rate of inflation in March, 2022 is primarily due to rise in prices of crude petroleum & natural gas, mineral oils, basic metals, etc owing to disruption in global supply chain caused by Russia-Ukraine conflict. The index numbers and inflation rate for the last three months of all commodities and WPI components are given below. `r formatnew(annual_sec_growth)`
+
+### The annual rate of inflation is 14.55% (Provisional) for the month of March, 2022 (over March, 2021) as compared to 7.89% in March, 2021. The high rate of inflation in March, 2022 is primarily due to rise in prices of crude petroleum & natural gas, mineral oils, basic metals, etc owing to disruption in global supply chain caused by Russia-Ukraine conflict. The index numbers and inflation rate for the last three months of all commodities and WPI components are given below. `r formatnew(annual_sec_indices)`
+
+### The annual rate of inflation is 14.55% (Provisional) for the month of March, 2022 (over March, 2021) as compared to 7.89% in March, 2021. The high rate of inflation in March, 2022 is primarily due to rise in prices of crude petroleum & natural gas, mineral oils, basic metals, etc owing to disruption in global supply chain caused by Russia-Ukraine conflict. The index numbers and inflation rate for the last three months of all commodities and WPI components are given below. `r formatnew(sectoral_growth)`
